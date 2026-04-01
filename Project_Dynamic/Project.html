@@ -1,14 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script type="module" src="Project.js"></script>
-    <link rel="stylesheet" href="Project.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindInBrussels</title>
+
+  <link rel="stylesheet" href="Project.css">
+  <script type="module" src="Project.js" defer></script>
 </head>
+
 <body>
-    <p>Hello World</p>
-    <p>test2</p>
+
+  <header>
+    <h1>FindInBrussels</h1>
+    <p>Ontdek streetarts in Brussel !</p>
+  </header>
+
+  <section class="knoppen">
+    
+    <button id="favorieten">Bekijk favorieten</button>
+
+    <input type="text" id="zoekbalk" placeholder="Zoek een streetart...">
+    
+    <select id="sorteerknop">
+      <option value="asc">A-Z</option>
+      <option value="desc">Z-A</option>
+    </select>
+  </section>
+
+  <main id="resultaten"></main>
+
 </body>
 </html>
