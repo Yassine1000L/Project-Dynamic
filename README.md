@@ -34,3 +34,6 @@ Het onderwerp van de website is het weergeven van publieke streetarts, die in Br
 -  JavaScript-pagina
   -  Link met API: Hisham
   -  Functie toonData: Yassine
+
+
+-  README-document: Hisham
