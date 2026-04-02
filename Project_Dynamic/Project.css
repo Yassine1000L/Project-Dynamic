@@ -1,13 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #1e3b72, #6b11cb34);
+  color: #333;
+  
+}
+
 header {
-  background-color: rgba(0, 0, 0, 0.950);
+  
+  background-color: #0b137fb7;
   color: white;
   text-align: center;
+  padding: 25px;
+  font-size: 20px;
+  border-radius: 80px;
+  font-weight: bold;
+
+}
+
+.knoppen {
+  display: flex;
+  gap: 15px;
   padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+input, select, button {
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+#zoekbalk {
+  width: 355px;
+}
+
+button {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: transparent;
+  cursor: pointer;
+    font-size: 17px;
+
+}
+
+#filtermenu {
+  display: flex;
+  gap: 10px;
+}
+
+.onzichtbaarmenu {
+  display: none;
+}
+
+#resultaten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 25px;
 }
 
 
-body {
-  font-family: Arial;
-  background-color: rgba(0, 0, 0, 0.800);
-  margin: 0;
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+
+.card h3 {
+  margin-top: 0;
+  color: #1e3b72eb;
+}
+.card h3:hover {
+  text-decoration: underline;
+}
+
+
+.card p {
+  margin: 5px 0;
+}
+
+
+
+
+
+#filterknop {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}
+
+#filterknop:hover {
+  background-color: transparent;
+  font-size: 17px;
+  cursor: pointer;
 }
