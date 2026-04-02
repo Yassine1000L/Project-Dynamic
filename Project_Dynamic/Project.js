@@ -27,7 +27,7 @@ function toonData(items) {
         kaart.classList.add("card");
 
         kaart.innerHTML = `
-            <h3>${item.name_en || "Geen naam"}</h3>
+            <h3>${item.name_nl || "Geen naam"}</h3>
             <p>${item.artist_name || "Onbekend"}</p>
         `;
 
