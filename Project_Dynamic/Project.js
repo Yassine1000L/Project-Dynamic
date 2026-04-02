@@ -5,6 +5,29 @@ const URL = "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/parc
 let alleData = [];
 let huidigeWeergave = "data";
 
+
+
+
+const observer = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+};
+
+const kaartObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add('zichtbaar');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observer);
+
+
+
+
 async function haalDataOp() {
     try {
         const response = await fetch(URL);
@@ -43,6 +66,8 @@ function toonData(items) {
         };
 
         container.appendChild(kaart);
+
+        kaartObserver.observe(kaart);
     }
 }
 
@@ -151,6 +176,8 @@ function toonFavorieten() {
         };
 
         container.appendChild(kaart);
+
+        kaartObserver.observe(kaart);
     }
 }
 
