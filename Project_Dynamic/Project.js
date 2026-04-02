@@ -61,7 +61,7 @@ window.addEventListener("load", function () {
     const zoekbalk = document.getElementById("zoekbalk");
     zoekbalk.addEventListener("input", zoekNamenOp);
 
-    // FILTER TOGGLE
+    
     const filterKnop = document.getElementById("filterknop");
     const filterMenu = document.getElementById("filtermenu");
 
