@@ -6,7 +6,7 @@
   <title>FindInBrussels</title>
 
   <link rel="stylesheet" href="Project.css">
-  <script type="module" src="Project.js" defer></script>
+  <script src="Project.js" defer></script>
 </head>
 
 <body>
@@ -17,46 +17,42 @@
 </header>
 
 <section class="knoppen">
-
-  <div class="bovenrij">
-    <button id="favorieten">Bekijk je favorieten</button>
-
-    <input type="text" id="zoekbalk" placeholder="Zoek een streetart of artiest op...">
-
-    <button id="filterknop">Filter</button>
-
-    <select id="sorteerOpNaam">
-      <option value="">Sorteer op streetartnamen...</option>
-      <option value="asc">A-Z</option>
-      <option value="desc">Z-A</option>
-    </select>
-
-    <select id="sorteerOpArtiest">
-      <option value="">Sorteer op Artiesten...</option>
-      <option value="asc">A-Z</option>
-      <option value="desc">Z-A</option>
-    </select>
-  </div>
-
   
-  <div id="filtermenu">
-    <label>Postcode:
-      <select id="postcode">
-        <option value="">Alle postcodes</option>
-      </select>
-    </label>
+  <button id="home">⬅ Terug</button>
 
-    <label>Jaar:
-      <select id="jaar">
-        <option value="">Alle jaren</option>
-      </select>
-    </label>
+  <button id="favorieten">Bekijk je favorieten</button>
+
+
+  <input type="text" id="zoekbalk" placeholder="Zoek een streetart of artiest op...">
+
+  <button id="filterknop">Filter</button>
+
+  <select id="sorteerOpNaam">
+    <option value="">Sorteer op streetartnamen...</option>
+    <option value="asc">A-Z</option>
+    <option value="desc">Z-A</option>
+  </select>
+
+  <select id="sorteerOpArtiest">
+    <option value="">Sorteer op Artiesten...</option>
+    <option value="asc">A-Z</option>
+    <option value="desc">Z-A</option>
+  </select>
+
+  <div id="filtermenu">
+    <select id="postcode">
+      <option value="">Alle postcodes</option>
+    </select>
+
+    <select id="jaar">
+      <option value="">Alle jaren</option>
+    </select>
   </div>
 
 </section>
 
 
-<main id="resultaten"></main>
+<div id="resultaten"></div>
 
 </body>
 </html>

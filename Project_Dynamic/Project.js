@@ -3,38 +3,56 @@
 const URL = "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/parcours_street_art/records?limit=24";
 
 let alleData = [];
+let huidigeWeergave = "data";
+
+
+
+
 
 async function haalDataOp() {
-    try {
-        const response = await fetch(URL);
-        const data = await response.json();
+    const response = await fetch(URL);
+    const data = await response.json();
 
-        alleData = data.results;
+    alleData = data.results;
 
-        vulFilters();
-
-        toonData(alleData);
-
-    } catch (fout) {
-        console.error(fout);
-    }
+    vulFilters();
+    toonData(alleData);
 }
 
 
 
 
+
 function toonData(items) {
+
+    if (huidigeWeergave === "favorieten") return;
+
     const container = document.getElementById("resultaten");
     container.innerHTML = "";
 
     for (let item of items) {
+
         const kaart = document.createElement("div");
         kaart.classList.add("card");
 
-        kaart.innerHTML = `
-            <h3>${item.name_nl || "Geen naam"}</h3>
-            <p>${item.artist_name || "Onbekend"}</p>
-        `;
+       kaart.innerHTML = `
+    <h3>${item.name_nl || "Geen naam"}</h3>
+
+    <p><strong>Artiest:</strong> ${item.artist_name || "Onbekend"}</p>
+
+    <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
+
+    <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
+
+    <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
+
+    <button class="fav">⭐</button>
+`;
+
+
+        kaart.querySelector(".fav").onclick = () => {
+            voegToeAanFavorieten(item);
+        };
 
         container.appendChild(kaart);
     }
@@ -45,24 +63,15 @@ function toonData(items) {
 
 
 
-function zoekNamenOp() {
+function voegToeAanFavorieten(item) {
 
-    const zoekTerm = document.getElementById("zoekbalk").value.toLowerCase();
+    let fav = JSON.parse(localStorage.getItem("fav")) || [];
 
-    if (zoekTerm === "") {
-        toonData(alleData);
-        return;
-    }
+    fav.push(item);
 
-    const gevondenNamen = alleData.filter(item => {
+    localStorage.setItem("fav", JSON.stringify(fav));
 
-        let naam = (item.name_nl || "").toLowerCase();
-        let artiest = (item.artist_name || "").toLowerCase();
-
-        return naam.includes(zoekTerm) || artiest.includes(zoekTerm);
-    });
-
-    toonData(gevondenNamen);
+    alert("Toegevoegd!");
 }
 
 
@@ -70,9 +79,69 @@ function zoekNamenOp() {
 
 
 
+function toonFavorieten() {
+
+    huidigeWeergave = "favorieten";
+
+    const container = document.getElementById("resultaten");
+    container.innerHTML = "";
+
+    let fav = JSON.parse(localStorage.getItem("fav")) || [];
+
+    if (fav.length === 0) {
+        container.innerHTML = "<h2>Geen favorieten</h2>";
+        return;
+    }
+
+    for (let item of fav) {
+
+        const kaart = document.createElement("div");
+        kaart.classList.add("card");
+
+        
+        kaart.innerHTML = `
+    <h3>${item.name_nl}</h3>
+
+    <p><strong>Artiest:</strong> ${item.artist_name}</p>
+
+    <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
+
+    <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
+
+    <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
+`;
+
+        container.appendChild(kaart);
+    }
+}
+
+
+
+
+
+function zoekNamenOp() {
+
+    huidigeWeergave = "data";
+
+    const zoekTerm = document.getElementById("zoekbalk").value.toLowerCase();
+
+    const resultaat = alleData.filter(item => {
+        let naam = (item.name_nl || "").toLowerCase();
+        let artiest = (item.artist_name || "").toLowerCase();
+        return naam.includes(zoekTerm) || artiest.includes(zoekTerm);
+    });
+
+    toonData(resultaat);
+}
+
+
+
+
 
 
 function sorteerOpArtiestEnStreetart() {
+
+    huidigeWeergave = "data";
 
     const keuzeNaam = document.getElementById("sorteerOpNaam").value;
     const keuzeArtiest = document.getElementById("sorteerOpArtiest").value;
@@ -85,27 +154,11 @@ function sorteerOpArtiestEnStreetart() {
         let artiestA = (a.artist_name || "").toLowerCase();
         let artiestB = (b.artist_name || "").toLowerCase();
 
-        // Eerst sorteren op artiest
-        if (keuzeArtiest === "asc") {
-            if (artiestA < artiestB) return -1;
-            if (artiestA > artiestB) return 1;
-        }
+        if (keuzeArtiest === "asc") return artiestA.localeCompare(artiestB);
+        if (keuzeArtiest === "desc") return artiestB.localeCompare(artiestA);
 
-        if (keuzeArtiest === "desc") {
-            if (artiestA > artiestB) return -1;
-            if (artiestA < artiestB) return 1;
-        }
-
-        // Daarna op naam
-        if (keuzeNaam === "asc") {
-            if (naamA < naamB) return -1;
-            if (naamA > naamB) return 1;
-        }
-
-        if (keuzeNaam === "desc") {
-            if (naamA > naamB) return -1;
-            if (naamA < naamB) return 1;
-        }
+        if (keuzeNaam === "asc") return naamA.localeCompare(naamB);
+        if (keuzeNaam === "desc") return naamB.localeCompare(naamA);
 
         return 0;
     });
@@ -119,13 +172,7 @@ function sorteerOpArtiestEnStreetart() {
 
 
 
-
-
-
-
 function vulFilters() {
-
-    console.log(alleData[0]);
 
     const postcodeSelect = document.getElementById("postcode");
     const jaarSelect = document.getElementById("jaar");
@@ -135,36 +182,32 @@ function vulFilters() {
 
     for (let item of alleData) {
 
-    if (item.postalcode && !postcodes.includes(item.postalcode)) {
-    postcodes.push(item.postalcode);
+        if (item.postalcode && !postcodes.includes(item.postalcode)) {
+            postcodes.push(item.postalcode);
         }
 
-    if (item.real_date) {
-
-    let jaar = item.real_date.split("-")[0];
-
-    if (!jaren.includes(jaar)) {
-        jaren.push(jaar);
+        if (item.real_date) {
+            let jaar = item.real_date.split("-")[0];
+            if (!jaren.includes(jaar)) {
+                jaren.push(jaar);
+            }
+        }
     }
-    }
+
+    postcodes.forEach(pc => {
+        let opt = document.createElement("option");
+        opt.value = pc;
+        opt.textContent = pc;
+        postcodeSelect.appendChild(opt);
+    });
+
+    jaren.forEach(j => {
+        let opt = document.createElement("option");
+        opt.value = j;
+        opt.textContent = j;
+        jaarSelect.appendChild(opt);
+    });
 }
-
-    for (let pc of postcodes) {
-        let option = document.createElement("option");
-        option.value = pc;
-        option.textContent = pc;
-        postcodeSelect.appendChild(option);
-    }
-
-    for (let jaar of jaren) {
-        let option = document.createElement("option");
-        option.value = jaar;
-        option.textContent = jaar;
-        jaarSelect.appendChild(option);
-    }
-}
-
-
 
 
 
@@ -175,35 +218,35 @@ function vulFilters() {
 
 function filterData() {
 
-    const gekozenPostcode = document.getElementById("postcode").value;
-    const gekozenJaar = document.getElementById("jaar").value;
+    huidigeWeergave = "data";
 
-    const gefilterd = alleData.filter(item => {
+    const pc = document.getElementById("postcode").value;
+    const jaar = document.getElementById("jaar").value;
+
+    const result = alleData.filter(item => {
 
         let postcode = item.postalcode || "";
-        let jaar = item.real_date || "";
-
-        let alleenJaar = jaar.split("-")[0];
+        let j = item.real_date ? item.real_date.split("-")[0] : "";
 
         return (
-            (gekozenPostcode === "" || postcode === gekozenPostcode) &&
-            (gekozenJaar === "" || alleenJaar === gekozenJaar)
+            (pc === "" || postcode === pc) &&
+            (jaar === "" || j === jaar)
         );
     });
 
-    if (gefilterd.length === 0) {
+    if (result.length === 0) {
 
     const container = document.getElementById("resultaten");
 
     container.innerHTML = `
-    <div class="geen-resultaten">
-        <h2>Geen resultaten...</h2>
-        <p>Probeer een andere combinatie van filters</p>
-    </div>
+        <div class="geen-resultaten">
+            <h2>Sorry, geen resultaten...</h2>
+            <p>Probeer een andere combinatie</p>
+        </div>
     `;
 
     } else {
-    toonData(gefilterd);
+    toonData(result);
     }
 }
 
@@ -213,34 +256,24 @@ function filterData() {
 
 
 
-
-
-
-const sorteerknopStreetartsnaam = document.getElementById("sorteerOpNaam");
-const sorteerknopArtiest = document.getElementById("sorteerOpArtiest");
-
-if (sorteerknopStreetartsnaam) sorteerknopStreetartsnaam.addEventListener("change", sorteerOpArtiestEnStreetart);
-if (sorteerknopArtiest) sorteerknopArtiest.addEventListener("change", sorteerOpArtiestEnStreetart);
-
-window.addEventListener("load", function () {
+window.onload = () => {
 
     haalDataOp();
 
-    document.getElementById("postcode").addEventListener("change", filterData);
-    document.getElementById("jaar").addEventListener("change", filterData);
+    document.getElementById("favorieten").onclick = toonFavorieten;
+    document.getElementById("zoekbalk").oninput = zoekNamenOp;
+    document.getElementById("postcode").onchange = filterData;
+    document.getElementById("jaar").onchange = filterData;
+    document.getElementById("sorteerOpNaam").onchange = sorteerOpArtiestEnStreetart;
+    document.getElementById("sorteerOpArtiest").onchange = sorteerOpArtiestEnStreetart;
 
-    const zoekbalk = document.getElementById("zoekbalk");
-    zoekbalk.addEventListener("input", zoekNamenOp);
+    document.getElementById("filterknop").onclick = () => {
+        document.getElementById("filtermenu").classList.toggle("actief");
+    };
 
+    document.getElementById("home").onclick = () => {
+    huidigeWeergave = "data";
+    toonData(alleData);
+    };
     
-    const filterKnop = document.getElementById("filterknop");
-    const filterMenu = document.getElementById("filtermenu");
-
-    filterKnop.addEventListener("click", function () {
-        filterMenu.classList.toggle("actief");
-    });
-
-});
-
-   
-
+};

@@ -89,6 +89,14 @@ button:hover {
   margin: 5px 0;
 }
 
+#resultaten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+
 .geen-resultaten {
   background: white;
   padding: 30px;
@@ -106,4 +114,27 @@ button:hover {
 .geen-resultaten p {
   color: #555;
   font-size: 16px;
+}
+
+
+#resultaten {
+  min-height: 500px;
+}
+
+
+#resultaten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+main {
+  min-height: 500px;
+}
+
+
+.card p {
+  margin: 4px 0;
+  font-size: 14px;
 }
