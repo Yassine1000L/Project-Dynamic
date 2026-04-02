@@ -35,7 +35,7 @@ function toonData(items) {
             <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
             <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
             <p class="beschrijving"><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
-            <button class="fav">⭐ Voeg toe</button>
+            <button class="fav">Voeg toe</button>
         `;
 
         kaart.querySelector(".fav").onclick = () => {
@@ -100,21 +100,54 @@ function toonFavorieten() {
         return;
     }
 
-    for (let item of fav) {
+    for (let i = 0; i < fav.length; i++) {
+        let item = fav[i];
         const kaart = document.createElement("div");
         kaart.classList.add("card");
+
+        let huidigeNotitie = item.notitie || "";
 
         kaart.innerHTML = `
             <h3>${item.name_nl || "Geen naam"}</h3>
             <p><strong>Artiest:</strong> ${item.artist_name || "Onbekend"}</p>
             <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
             <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
-            <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
-            <button class="verwijder-fav">Verwijderen</button>
+            <p class="beschrijving"><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
+            
+            <div class="notitie">
+                <input type="text" class="notitie-input" placeholder="Wat vind je hiervan?" value="${huidigeNotitie}">
+                <p class="foutmelding" style="display: none; color: red; font-size: 12px; margin: 0;">Minimaal 2 karakters vereist.</p>
+                <button class="notitie-opslaan">Opslaan</button>
+            </div>
+
+            <button class="verwijderen-fav">Verwijderen</button>
         `;
 
-        kaart.querySelector(".verwijder-fav").onclick = () => {
+        kaart.querySelector(".verwijderen-fav").onclick = () => {
             verwijderUitFavorieten(item);
+        };
+
+        kaart.querySelector(".notitie-opslaan").onclick = () => {
+            const inputVeld = kaart.querySelector(".notitie-input");
+            const foutMelding = kaart.querySelector(".foutmelding");
+            const opslaanKnop = kaart.querySelector(".notitie-opslaan");
+            
+            const getypteTekst = inputVeld.value.trim(); 
+
+            if (getypteTekst.length > 0 && getypteTekst.length < 2) {
+                foutMelding.style.display = "block";
+                inputVeld.style.borderColor = "red";
+            } else {
+                foutMelding.style.display = "none";
+                inputVeld.style.borderColor = "#ccc";
+                
+                item.notitie = getypteTekst;
+                fav[i] = item;
+                localStorage.setItem("fav", JSON.stringify(fav));
+
+                opslaanKnop.textContent = "Opgeslagen!";
+                setTimeout(() => opslaanKnop.textContent = "Opslaan", 2000);
+            }
         };
 
         container.appendChild(kaart);
@@ -179,7 +212,7 @@ function sorteerOpArtiestEnStreetart() {
         }
 
         if (keuzeNaam !== "keuze") {
-            if (keuzeNaam === "dalend") { // A-Z
+            if (keuzeNaam === "dalend") {
                 if (naam1 < naam2) return -1;
                 if (naam1 > naam2) return 1;
             } else {
