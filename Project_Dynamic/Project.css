@@ -88,3 +88,22 @@ button:hover {
 .card p {
   margin: 5px 0;
 }
+
+.geen-resultaten {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  grid-column: 1 / -1;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.geen-resultaten h2 {
+  color: #1e3b72;
+  margin-bottom: 10px;
+}
+
+.geen-resultaten p {
+  color: #555;
+  font-size: 16px;
+}

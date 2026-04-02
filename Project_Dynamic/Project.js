@@ -194,7 +194,13 @@ function filterData() {
     if (gefilterd.length === 0) {
 
     const container = document.getElementById("resultaten");
-    container.innerHTML = "<p>Geen resultaten gevonden 😢</p>";
+
+    container.innerHTML = `
+    <div class="geen-resultaten">
+        <h2>Geen resultaten...</h2>
+        <p>Probeer een andere combinatie van filters</p>
+    </div>
+    `;
 
     } else {
     toonData(gefilterd);
