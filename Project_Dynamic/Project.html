@@ -18,37 +18,40 @@
 
 <section class="knoppen">
 
-  <button id="favorieten">Bekijk je favorieten</button>
+  <div class="bovenrij">
+    <button id="favorieten">Bekijk je favorieten</button>
 
-  <input type="text" id="zoekbalk" placeholder="Zoek een streetart of artiest op...">
+    <input type="text" id="zoekbalk" placeholder="Zoek een streetart of artiest op...">
 
-  <button id="filterknop">Filter</button>
+    <button id="filterknop">Filter</button>
 
-  <div id="filtermenu" class="onzichtbaarmenu">
+    <select id="sorteerOpNaam">
+      <option value="">Sorteer op streetartnamen...</option>
+      <option value="asc">A-Z</option>
+      <option value="desc">Z-A</option>
+    </select>
+
+    <select id="sorteerOpArtiest">
+      <option value="">Sorteer op Artiesten...</option>
+      <option value="asc">A-Z</option>
+      <option value="desc">Z-A</option>
+    </select>
+  </div>
+
+  <!-- FILTERS ONDER -->
+  <div id="filtermenu">
     <label>Postcode:
       <select id="postcode">
-        <option value="mogelijkheden">Alle postcodes</option>
+        <option value="">Alle postcodes</option>
       </select>
     </label>
 
     <label>Jaar:
       <select id="jaar">
-        <option value="mogelijkheden">Alle jaren</option>
+        <option value="">Alle jaren</option>
       </select>
     </label>
   </div>
-
-  <select id="sorteerOpNaam">
-    <option value="keuze">Sorteer op streetartnamen...</option>
-    <option value="dalend">A-Z</option>
-    <option value="stijgend">Z-A</option>
-  </select>
-
-  <select id="sorteerOpArtiest">
-    <option value="keuze">Sorteer op Artiesten...</option>
-    <option value="dalend">A-Z</option>
-    <option value="stijgend">Z-A</option>
-  </select>
 
 </section>
 
