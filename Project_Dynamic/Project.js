@@ -79,6 +79,7 @@ function voegToeAanFavorieten(item) {
 
 
 
+
 function toonFavorieten() {
 
     huidigeWeergave = "favorieten";
@@ -93,27 +94,47 @@ function toonFavorieten() {
         return;
     }
 
-    for (let item of fav) {
+    fav.forEach((item, index) => {
 
         const kaart = document.createElement("div");
         kaart.classList.add("card");
 
-
         kaart.innerHTML = `
-    <h3>${item.name_nl}</h3>
+            <h3>${item.name_nl}</h3>
+            <p><strong>Artiest:</strong> ${item.artist_name}</p>
+            <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
+            <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
+            <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
 
-    <p><strong>Artiest:</strong> ${item.artist_name}</p>
+            <button class="remove-btn">Verwijderen</button>
+        `;
 
-    <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
-
-    <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
-
-    <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
-`;
+    
+        kaart.querySelector(".remove-btn").onclick = () => {
+            verwijderFavoriet(index);
+        };
 
         container.appendChild(kaart);
-    }
+    });
 }
+
+
+
+
+
+
+
+function verwijderFavoriet(index) {
+
+    let fav = JSON.parse(localStorage.getItem("fav")) || [];
+
+    fav.splice(index, 1);
+
+    localStorage.setItem("fav", JSON.stringify(fav));
+
+    toonFavorieten(); 
+}
+
 
 
 
@@ -256,6 +277,9 @@ function filterData() {
 
 
 
+
+
+
 window.onload = () => {
 
     haalDataOp();
@@ -275,5 +299,14 @@ window.onload = () => {
     huidigeWeergave = "data";
     toonData(alleData);
     };
+
+    kaart.querySelector(".remove-btn").onclick = () => {
+    verwijderFavoriet(index);
+    };
+
+    document.getElementById("theme").onclick = () => {
+    document.body.classList.toggle("dark");
+    };
+    
     
 };
