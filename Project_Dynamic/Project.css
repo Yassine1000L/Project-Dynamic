@@ -29,9 +29,21 @@ header {
 .bovenrij {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center;
+}
+
+
+.bovenrij button {
+  flex-shrink: 0;
+  min-width: 140px;
+  padding: 0 20px;
+  height: 45px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input, select, button {
@@ -143,4 +155,70 @@ main {
 .geen-resultaten p {
   color: #555;
   font-size: 16px;
+}
+
+
+
+body.dark-mode {
+  background: linear-gradient(135deg, #121212, #2b303a);
+  color: #f1f1f1;
+}
+
+body.dark-mode header {
+  background-color: #1a1a2e;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+
+body.dark-mode .card {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card h3 {
+  color: #8fb8ed; /* Een zachte blauwe kleur voor de titel */
+}
+
+body.dark-mode .card p {
+  color: #bbb;
+}
+
+body.dark-mode .geen-resultaten {
+  background: #1e1e1e;
+}
+
+body.dark-mode .geen-resultaten h2 {
+  color: #8fb8ed;
+}
+
+body.dark-mode .geen-resultaten p {
+  color: #bbb;
+}
+
+body.dark-mode #filtermenu {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+.verwijder-fav {
+  background-color: red
+}
+
+.verwijder-fav:hover {
+  background-color: red
+}
+
+
+
+.beschrijving {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 60px;
 }
