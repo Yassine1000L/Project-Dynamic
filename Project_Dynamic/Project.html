@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindInBrussels</title>
+
+  <link rel="stylesheet" href="Project.css">
+  <script type="module" src="Project.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <h1>FindInBrussels</h1>
+  <p>Ontdek streetarts in Brussel !</p>
+</header>
+
+<section class="knoppen">
+
+  <div class="bovenrij">
+
+    <button id="home">⬅ Terug</button>
+
+    <button id="favorieten">Bekijk je favorieten</button>
+
+    <input type="text" id="zoekbalk" placeholder="Zoek een streetart of artiest op...">
+
+    <button id="filterknop">Filter</button>
+
+    <select id="sorteerOpNaam">
+      <option value="">Sorteer op streetartnamen...</option>
+      <option value="dalend">A-Z</option>
+      <option value="stijgend">Z-A</option>
+    </select>
+
+    <select id="sorteerOpArtiest">
+      <option value="">Sorteer op Artiesten...</option>
+      <option value="dalend">A-Z</option>
+      <option value="stijgend">Z-A</option>
+    </select>
+  </div>
+
+  
+  <div id="filtermenu">
+    <label>Postcode:
+      <select id="postcode">
+        <option value="">Alle postcodes</option>
+      </select>
+    </label>
+
+    <label>Jaar:
+      <select id="jaar">
+        <option value="">Alle jaren</option>
+      </select>
+    </label>
+  </div>
+
+</section>
+
+
+<main id="resultaten"></main>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #1e3b72, #6b11cb34);
+  color: #333;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #0b137fb7;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 20px;
+  border-radius: 0 0 40px 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.knoppen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.bovenrij {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+input, select, button {
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#zoekbalk {
+  width: 100%;
+  max-width: 355px;
+}
+
+button {
+  background-color: #6c757d;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+#filtermenu {
+  display: none;
+  gap: 15px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 25px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#filtermenu.actief {
+  display: flex;
+}
+
+#filtermenu label {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+main {
+  min-height: 500px;
+}
+
+#resultaten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transform: scale(1.02); /* Laat de kaart iets groter worden (pop-effect) */
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #1e3b72;
+}
+
+.card h3:hover {
+  text-decoration: underline;
+}
+
+.card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.geen-resultaten {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  grid-column: 1 / -1; /* Zorgt dat deze in het midden over de hele breedte staat */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.geen-resultaten h2 {
+  color: #1e3b72;
+  margin-bottom: 10px;
+}
+
+.geen-resultaten p {
+  color: #555;
+  font-size: 16px;
+}
