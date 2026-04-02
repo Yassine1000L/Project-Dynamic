@@ -139,10 +139,15 @@ function vulFilters() {
     postcodes.push(item.postalcode);
         }
 
-    if (item.real_date && !jaren.includes(item.real_date)) {
-    jaren.push(item.real_date);
-        }
+    if (item.real_date) {
+
+    let jaar = item.real_date.split("-")[0];
+
+    if (!jaren.includes(jaar)) {
+        jaren.push(jaar);
     }
+    }
+}
 
     for (let pc of postcodes) {
         let option = document.createElement("option");
@@ -178,13 +183,23 @@ function filterData() {
         let postcode = item.postalcode || "";
         let jaar = item.real_date || "";
 
-        let matchPostcode = gekozenPostcode === "" || postcode == gekozenPostcode;
-        let matchJaar = gekozenJaar === "" || jaar.includes(gekozenJaar);
+        // Sommige data heeft een volledige datum, we willen alleen het jaar vergelijken
+        let alleenJaar = jaar.split("-")[0];
 
-        return matchPostcode && matchJaar;
+        return (
+            (gekozenPostcode === "" || postcode === gekozenPostcode) &&
+            (gekozenJaar === "" || alleenJaar === gekozenJaar)
+        );
     });
 
+    if (gefilterd.length === 0) {
+
+    const container = document.getElementById("resultaten");
+    container.innerHTML = "<p>Geen resultaten gevonden 😢</p>";
+
+    } else {
     toonData(gefilterd);
+    }
 }
 
 
