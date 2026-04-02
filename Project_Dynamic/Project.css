@@ -102,7 +102,7 @@ main {
 
 #resultaten {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   padding: 25px;
   max-width: 1400px;
@@ -120,12 +120,18 @@ main {
 .card:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   cursor: pointer;
-  transform: scale(1.02); /* Laat de kaart iets groter worden (pop-effect) */
+  transform: scale(1.02);
 }
 
 .card h3 {
   margin-top: 0;
   color: #1e3b72;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 45px;
 }
 
 .card h3:hover {
@@ -143,7 +149,7 @@ main {
   padding: 30px;
   border-radius: 15px;
   text-align: center;
-  grid-column: 1 / -1; /* Zorgt dat deze in het midden over de hele breedte staat */
+  grid-column: 1 / -1;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
@@ -177,7 +183,7 @@ body.dark-mode .card {
 }
 
 body.dark-mode .card h3 {
-  color: #8fb8ed; /* Een zachte blauwe kleur voor de titel */
+  color: #8fb8ed;
 }
 
 body.dark-mode .card p {
@@ -204,12 +210,12 @@ body.dark-mode #filtermenu {
 
 
 
-.verwijder-fav {
+.verwijderen-fav {
   background-color: red
 }
 
-.verwijder-fav:hover {
-  background-color: red
+.verwijderen-fav:hover {
+  background-color: rgb(143, 1, 1)
 }
 
 
@@ -221,4 +227,53 @@ body.dark-mode #filtermenu {
   overflow: hidden;
   text-overflow: ellipsis;
   min-height: 60px;
+}
+
+
+
+
+
+.notitie {
+  background-color: #f4f6f9;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.notitie-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.notitie-opslaan {
+  background-color: #28a745;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.notitie-opslaan:hover {
+  background-color: #218838;
+}
+
+body.dark-mode .notitie {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .notitie-input {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #555;
 }
