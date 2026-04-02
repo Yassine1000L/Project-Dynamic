@@ -34,7 +34,7 @@ function toonData(items) {
             <p><strong>Artiest:</strong> ${item.artist_name || "Onbekend"}</p>
             <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
             <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
-            <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
+            <p class="beschrijving"><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
             <button class="fav">⭐ Voeg toe</button>
         `;
 
@@ -57,7 +57,6 @@ function voegToeAanFavorieten(item) {
 
     let bestaatAl = false;
     for (let opgeslagenItem of fav) {
-        // DE NIEUWE CHECK:
         if (opgeslagenItem.name_nl === item.name_nl) { 
             bestaatAl = true;
         }
@@ -286,6 +285,24 @@ function filterData() {
 window.onload = () => {
 
     haalDataOp();
+
+    const themeKnop = document.getElementById("theme"); 
+    
+    if (themeKnop) {
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+
+        themeKnop.onclick = () => {
+            document.body.classList.toggle("dark-mode");
+            
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        };
+    }
 
     const favKnop = document.getElementById("favorieten");
     if (favKnop) favKnop.onclick = toonFavorieten;
