@@ -1,5 +1,5 @@
 # FindInBrussels
-Dit project hoort bij het vak "Dynamic Web". De bestanden die in dit project terug te vinden zijn, zijn de volgende: een html-pagina, een css-pagina en een js-pagina
+Dit project hoort bij het vak "Dynamic Web". De bestanden die in dit project terug te vinden zijn, zijn de volgende: een html-bestand, een css-bestand en een js-bestand.
 Het onderwerp van de website is het weergeven van publieke streetarts, die in Brussel gevestigd zijn.
 
 # Functionaliteiten
