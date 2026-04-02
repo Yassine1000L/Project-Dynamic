@@ -5,7 +5,7 @@ const URL = "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/parc
 let alleData = [];
 let huidigeWeergave = "data";
 
-
+//test yassine
 
 
 
@@ -98,7 +98,7 @@ function toonFavorieten() {
         const kaart = document.createElement("div");
         kaart.classList.add("card");
 
-        
+
         kaart.innerHTML = `
     <h3>${item.name_nl}</h3>
 
