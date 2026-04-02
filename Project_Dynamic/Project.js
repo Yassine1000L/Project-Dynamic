@@ -183,7 +183,6 @@ function filterData() {
         let postcode = item.postalcode || "";
         let jaar = item.real_date || "";
 
-        // Sommige data heeft een volledige datum, we willen alleen het jaar vergelijken
         let alleenJaar = jaar.split("-")[0];
 
         return (
