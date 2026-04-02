@@ -56,6 +56,7 @@ function zoekNamenOp() {
 
 window.addEventListener("load", function () {
 
+<<<<<<< HEAD
     haalDataOp();
 
     const zoekbalk = document.getElementById("zoekbalk");
@@ -70,3 +71,58 @@ window.addEventListener("load", function () {
     });
 
 });
+=======
+
+
+
+function sorteerOpArtiestEnStreetart() {
+
+    const keuzeNaam = document.getElementById("sorteerOpNaam").value;
+    const keuzeArtiest = document.getElementById("sorteerOpArtiest").value;
+
+    alleData.sort((a, b) => {
+        let naam1 = (a.name_nl || "").toLowerCase();
+        let naam2 = (b.name_nl || "").toLowerCase();
+        let artiest1 = (a.artist_name || "").toLowerCase();
+        let artiest2 = (b.artist_name || "").toLowerCase();
+
+    
+        if (keuzeArtiest !== "keuze") {
+            if (artiest1 !== artiest2) {
+                if (keuzeArtiest === "dalend") {
+                    if (artiest1 < artiest2) return -1;
+                    if (artiest1 > artiest2) return 1;
+                } else {
+                    if (artiest1 > artiest2) return -1;
+                    if (artiest1 < artiest2) return 1;
+                }
+            }
+        }
+
+        if (keuzeNaam !== "keuze") {
+            if (keuzeNaam === "dalend") {
+                if (naam1 < naam2) return -1;
+                if (naam1 > naam2) return 1;
+            } else {
+                if (naam1 > naam2) return -1;
+                if (naam1 < naam2) return 1;
+            }
+        }
+
+        return 0; 
+    });
+
+    toonData(alleData);
+}
+
+const sorteerknopStreetartsnaam = document.getElementById("sorteerOpNaam");
+const sorteerknopArtiest = document.getElementById("sorteerOpArtiest");
+
+if (sorteerknopStreetartsnaam) sorteerknopStreetartsnaam.addEventListener("change", sorteerOpArtiestEnStreetart);
+if (sorteerknopArtiest) sorteerknopArtiest.addEventListener("change", sorteerOpArtiestEnStreetart);
+
+
+
+
+haalDataOp();
+>>>>>>> b1496a3132bcb09703a9409f4a3bbb791f779396
