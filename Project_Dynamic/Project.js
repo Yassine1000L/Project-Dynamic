@@ -46,6 +46,12 @@ function toonData(items) {
     }
 }
 
+
+
+
+
+
+
 function voegToeAanFavorieten(item) {
     let fav = JSON.parse(localStorage.getItem("fav")) || [];
 
@@ -65,6 +71,17 @@ function voegToeAanFavorieten(item) {
         alert("Deze stond al in je favorieten!");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 function toonFavorieten() {
     huidigeWeergave = "favorieten";
@@ -94,11 +111,33 @@ function toonFavorieten() {
             <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
             <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
             <p><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
+            <button class="verwijder-fav">Verwijderen</button>
         `;
+
+        kaart.querySelector(".verwijder-fav").onclick = () => {
+            verwijderUitFavorieten(item);
+        };
 
         container.appendChild(kaart);
     }
 }
+
+
+
+
+
+
+function verwijderUitFavorieten(item) {
+    let fav = JSON.parse(localStorage.getItem("fav")) || [];
+    
+    fav = fav.filter(opgeslagenItem => opgeslagenItem.name_nl !== item.name_nl);
+    
+    localStorage.setItem("fav", JSON.stringify(fav));
+    
+    toonFavorieten(); 
+}
+
+
 
 function zoekNamenOp() {
     huidigeWeergave = "data";
@@ -155,6 +194,12 @@ function sorteerOpArtiestEnStreetart() {
 
     toonData(alleData);
 }
+
+
+
+
+
+
 
 function vulFilters() {
     const postcodeSelect = document.getElementById("postcode");
