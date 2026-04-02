@@ -35,4 +35,28 @@ function toonData(items) {
     }
 }
 
-    haalDataOp();
+
+function zoekNamenOp() {
+
+    const zoekTerm = document.getElementById("zoekbalk").value.toLowerCase();
+
+    if (zoekTerm === "") {
+        toonData(alleData);
+        return;
+    }
+
+    const gevondenNamen = alleData.filter(item => {
+
+        let naamNederlands = (item.name_nl || "").toLowerCase();
+        let artiest = (item.artist_name || "").toLowerCase();
+
+        return naamNederlands.includes(zoekTerm) || artiest.includes(zoekTerm);
+    });
+
+    toonData(gevondenNamen);
+}
+
+const zoekbalk = document.getElementById("zoekbalk");
+if (zoekbalk) zoekbalk.addEventListener("input", zoekNamenOp);
+
+haalDataOp();
