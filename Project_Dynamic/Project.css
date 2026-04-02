@@ -3,11 +3,9 @@ body {
   margin: 0;
   background: linear-gradient(135deg, #1e3b72, #6b11cb34);
   color: #333;
-  
 }
 
 header {
-  
   background-color: #0b137fb7;
   color: white;
   text-align: center;
@@ -15,7 +13,6 @@ header {
   font-size: 20px;
   border-radius: 80px;
   font-weight: bold;
-
 }
 
 .knoppen {
@@ -24,7 +21,6 @@ header {
   padding: 20px;
   flex-wrap: wrap;
   justify-content: center;
-
 }
 
 input, select, button {
@@ -46,28 +42,29 @@ button {
 }
 
 button:hover {
-  background-color: transparent;
   cursor: pointer;
-    font-size: 17px;
-
+  background-color: #333333d2;
+  text-decoration: underline;
 }
 
+/* FILTER MENU */
 #filtermenu {
-  display: flex;
-  gap: 10px;
-}
-
-.onzichtbaarmenu {
   display: none;
+  gap: 10px;
+  margin-top: 10px;
 }
 
+#filtermenu.actief {
+  display: flex;
+}
+
+/* RESULTATEN */
 #resultaten {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
   padding: 25px;
 }
-
 
 .card {
   background: white;
@@ -76,39 +73,20 @@ button:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-
-
 .card:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 
-
 .card h3 {
   margin-top: 0;
   color: #1e3b72eb;
 }
+
 .card h3:hover {
   text-decoration: underline;
 }
 
-
 .card p {
   margin: 5px 0;
-}
-
-
-
-
-
-#filterknop {
-  background-color: gray;
-  color: white;
-  font-weight: bold;
-}
-
-#filterknop:hover {
-  background-color: transparent;
-  font-size: 17px;
-  cursor: pointer;
 }
