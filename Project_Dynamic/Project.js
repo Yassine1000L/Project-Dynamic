@@ -57,6 +57,7 @@ function toonData(items) {
             <p><strong>Artiest:</strong> ${item.artist_name || "Onbekend"}</p>
             <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
             <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
+            <p><strong>Adres:</strong> ${item.location_nl || "Onbekend"}</p>
             <p class="beschrijving"><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
             <button class="fav">Voeg toe</button>
         `;
@@ -137,6 +138,7 @@ function toonFavorieten() {
             <p><strong>Artiest:</strong> ${item.artist_name || "Onbekend"}</p>
             <p><strong>Jaar:</strong> ${item.real_date ? item.real_date.split("-")[0] : "Onbekend"}</p>
             <p><strong>Postcode:</strong> ${item.postalcode || "Onbekend"}</p>
+            <p><strong>Adres:</strong> ${item.location_nl || "Onbekend"}</p>
             <p class="beschrijving"><strong>Beschrijving:</strong> ${item.description_nl || "Geen beschrijving"}</p>
             
             <div class="notitie">
