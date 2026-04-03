@@ -42,7 +42,6 @@ async function haalDataOp() {
     }
 }
 
-
 function toonData(items) {
     if (huidigeWeergave === "favorieten") return;
 
@@ -189,6 +188,8 @@ function toonFavorieten() {
 
 
 
+
+
 function verwijderUitFavorieten(item) {
     let fav = JSON.parse(localStorage.getItem("fav")) || [];
     
@@ -248,8 +249,9 @@ function sorteerOpArtiestEnStreetart() {
                 }
             }
         }
-
+    
         return 0; 
+    
     });
 
     toonData(alleData);
@@ -335,6 +337,9 @@ function filterData() {
     toonData(result);
     }
 }
+
+
+
 
 
 
