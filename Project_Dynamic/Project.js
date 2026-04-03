@@ -42,6 +42,10 @@ async function haalDataOp() {
     }
 }
 
+
+
+
+
 function toonData(items) {
     if (huidigeWeergave === "favorieten") return;
 
@@ -188,6 +192,8 @@ function toonFavorieten() {
 
 
 
+
+
 function verwijderUitFavorieten(item) {
     let fav = JSON.parse(localStorage.getItem("fav")) || [];
     
@@ -228,29 +234,38 @@ function sorteerOpArtiestEnStreetart() {
         let artiest1 = (a.artist_name || "").toLowerCase();
         let artiest2 = (b.artist_name || "").toLowerCase();
 
+
+
+
+        
         if (keuzeArtiest !== "keuze") {
             if (artiest1 !== artiest2) {
                 if (keuzeArtiest === "dalend") {
                     if (artiest1 < artiest2) return -1;
                     if (artiest1 > artiest2) return 1;
-                } else { // Z-A
+                } else { 
                     if (artiest1 > artiest2) return -1;
                     if (artiest1 < artiest2) return 1;
                 }
             }
         }
 
+
+
+
         if (keuzeNaam !== "keuze") {
-            if (keuzeNaam === "dalend") {
-                if (naam1 < naam2) return -1;
+            if (naam1 !== naam2) {
+                if (keuzeNaam === "dalend") {
+                    if (naam1 < naam2) return -1;
                 if (naam1 > naam2) return 1;
             } else {
                 if (naam1 > naam2) return -1;
                 if (naam1 < naam2) return 1;
             }
         }
-
+    }
         return 0; 
+    
     });
 
     toonData(alleData);
@@ -337,6 +352,9 @@ function filterData() {
     toonData(result);
     }
 }
+
+
+
 
 
 
