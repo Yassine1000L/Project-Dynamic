@@ -42,6 +42,7 @@ async function haalDataOp() {
     }
 }
 
+
 function toonData(items) {
     if (huidigeWeergave === "favorieten") return;
 
