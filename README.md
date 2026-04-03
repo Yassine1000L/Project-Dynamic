@@ -6,13 +6,14 @@ Het onderwerp van de website is het weergeven van publieke streetarts, die in Br
 - Het zoeken van een streetart in Brussel.
 - Het zoeken van de auteur van een streetart.
 - Het weergeven van alle streetarts op de webpagina.
-- Het sorteren van alle streetarts op naam: aflabatisch en omgekeerd alfabetisch.
+- Het sorteren van alle streetarts en alle artiesten op naam: aflabatisch en omgekeerd alfabetisch.
 - Het filtreren van alle streetarts op basis van volgende kenmerken:
   - Postcode
   - Datum
 
 # Gebruikte API
 Data van De Stad Brussel: https://opendata.brussels.be/pages/home/
+24 streetarts in Brussel: https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/parcours_street_art/records?limit=24
 
 # Technische Vereiste
 - DOM Manipulatie:
@@ -42,6 +43,25 @@ Data van De Stad Brussel: https://opendata.brussels.be/pages/home/
   - Gebruiksvriendelijke elementen
  
 # Installatiehandleiding
+- Download Visual Studio Code, in het geval dit nog niet gedaan is.
+- Aan de linkerkant van het scherm op Visual Studio Code, bevindt zich een vierkant gevuld met vier blokjes:
+  - Klik op dat vierkant.
+- Voeg de volgende extensies toe op Visual Studio Code om eventuele problemen te vermijden:
+  - HTML CSS Support
+  - Live Server 
+- Download de folder: "Project_Dynamic"
+- Sla de folder op een gemakkelijk bereikbaar plaats op de computer.
+- Open Visual Studio Code.
+- Helemaal bovenaan links, staat er een reeks woorden na elkaar.
+  - Klik op "File"
+  - Klik daarna op "Open Folder"
+  - Blader in uw bestanden om de gedownloade folder terug te vinden en te selecteren.
+- In de folder zijn drie bestanden terug te vinden.
+- Open Project.html.
+- Helemaal onderaan rechts, verschijnt er een icoontje "Go Live"
+  - Klik hierop.
+    - Deze zorgt ervoor dat een lokaal server gaat draaien om de webapplicatie te kunnen gebruiken.    
+- Nu is het mogelijk om de functionaliteiten van de website te gebruiken.
 
 
 # Screenshots van de applicatie
@@ -49,6 +69,8 @@ Data van De Stad Brussel: https://opendata.brussels.be/pages/home/
 
 # Bronnen
 - Cursus "Dynamic Web"; raadpleegbaar via canvas.ehb.be
+- AI-tool: Google Gemini:
+  -  
 
 
 # Taakverdeling
@@ -56,18 +78,25 @@ Data van De Stad Brussel: https://opendata.brussels.be/pages/home/
 - Product Backlog: Hisham
 - HTML-pagina:
   - Organisatie en leesbaarheid: Hisham
-  - Knoppen: Yassine
-  - Basisstructuur: Yassine
+  - Knoppen bovenrij: Hisham
+  - Structuur: Yassine
+  - Filtermenu en filterknoppen: Yassine
   - Correcte tags- en labelgebruik: Hisham
 
 - JavaScript-pagina:
   - Link met API: Hisham
-  - Functie toonData: Yassine
+  - Functies toonData, haalDataOp, voegToeAanFavorieten, vulFilters, filterData, window.onload: Yassine
+  - Functies toonFavorieten, VerwijderUitFavorieten, zoekNamenOp, sorteerOpArtiestEnStreetart: Hisham
 
 - CSS-pagina:
-  - header en body: Hisham
-  - knoppen: Yassine
-  - 
+  - Header en body: Yassine
+  - Knoppen bovenrij: Yassine
+  - Filters: Yassine
+  - Kaarten: Yassine
+  - Darkmode: Yassine
+  - Responsive Web Design: Hisham
+  - Favorietknoppen: Hisham
+  - Correcte properties- en selectorengebruik: Hisham
 
 - README-document: Hisham
 
