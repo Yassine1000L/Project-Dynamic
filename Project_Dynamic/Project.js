@@ -326,8 +326,7 @@ function filterData() {
 
     container.innerHTML = `
         <div class="geen-resultaten">
-            <h2>Sorry, geen resultaten...</h2>
-            <p>Probeer een andere combinatie</p>
+            <h2>Geen resultaten !</h2>
         </div>
     `;
 
