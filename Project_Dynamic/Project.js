@@ -228,25 +228,23 @@ function sorteerOpArtiestEnStreetart() {
         let artiest1 = (a.artist_name || "").toLowerCase();
         let artiest2 = (b.artist_name || "").toLowerCase();
 
-        if (keuzeArtiest !== "keuze") {
-            if (artiest1 !== artiest2) {
-                if (keuzeArtiest === "dalend") {
-                    if (artiest1 < artiest2) return -1;
-                    if (artiest1 > artiest2) return 1;
-                } else { // Z-A
-                    if (artiest1 > artiest2) return -1;
-                    if (artiest1 < artiest2) return 1;
+        if (keuzeNaam !== "keuze") {
+            if (naam1 !== naam2) {
+                if (keuzeNaam === "dalend") {
+                    return naam1 < naam2 ? -1 : 1;
+                } else {
+                    return naam1 > naam2 ? -1 : 1;
                 }
             }
         }
 
-        if (keuzeNaam !== "keuze") {
-            if (keuzeNaam === "dalend") {
-                if (naam1 < naam2) return -1;
-                if (naam1 > naam2) return 1;
-            } else {
-                if (naam1 > naam2) return -1;
-                if (naam1 < naam2) return 1;
+                if (keuzeArtiest !== "keuze") {
+            if (artiest1 !== artiest2) {
+                if (keuzeArtiest === "dalend") {
+                    return artiest1 < artiest2 ? -1 : 1;
+                } else {
+                    return artiest1 > artiest2 ? -1 : 1;
+                }
             }
         }
 
