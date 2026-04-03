@@ -76,6 +76,8 @@ Data van De Stad Brussel: https://opendata.brussels.be/pages/home/
 
 # Screenshots van de applicatie
 <img width="1920" height="3461" alt="image" src="https://github.com/user-attachments/assets/09b9832e-a8ee-46e1-b1f0-c2982fec2780" />
+<img width="1920" height="1151" alt="image" src="https://github.com/user-attachments/assets/0ce9bc78-f74a-465f-8edf-245d9b4c9891" />
+
 
 
 
